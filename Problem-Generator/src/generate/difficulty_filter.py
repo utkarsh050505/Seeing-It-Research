@@ -150,8 +150,9 @@ def confirm(args):
 
 def groq_note(marks):
     tokens = marks * TOKENS_PER_MARK
-    keys = len(make_client(load_model_config("judge")))
-    allowance = f"{200_000 * keys:,} a day with {keys} key{'s' if keys > 1 else ''}"   # free plan: 200,000 per key
+    keys = len(make_client(load_model_config("judge")))   # free plan: 200,000 a day per account
+    allowance = (f"{200_000 * keys:,} a day with {keys} keys from different accounts" if keys > 1 else
+                 "200,000 a day")
     words = (f"fits in the free plan's {allowance} if little was used today" if tokens <= 200_000 * keys else
              f"more than the free plan's {allowance}, so judging will stop and carry on later")
     return f"about {tokens:,} Groq tokens; {words}"

@@ -1,7 +1,8 @@
 # API keys
 .env
 
-# Private split of the dataset (context.md §3.2)
-data/private/
+# Benchmark data stays off the public repo: unfrozen items, model answers, and the private split
+# (~30% of items must never be posted online, context.md §3.2)
+data/
 
 __pycache__/
