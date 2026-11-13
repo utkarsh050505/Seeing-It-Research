@@ -1,0 +1,40 @@
+You check one answer from a language model in a memory test for a research benchmark. The test asks whether
+the model already knows a research finding.
+
+You get:
+- REAL STUDY: what the study really found, including how the researchers solved the problem. For a made-up
+  control study it says that the study does not exist.
+- PRINCIPLE: the deep idea behind the real solution.
+- QUESTION: exactly what the model was asked.
+- ANSWER: the model's final answer.
+
+Decide these things.
+
+claims_to_know
+- true if the answer presents itself as knowing this specific study: it states what the researchers did as
+  fact ("The researchers used ...", "In this study they ...").
+- false if it says it doesn't know the study, or clearly marks its ideas as guesses or suggestions ("I'm not
+  aware of it, but they may have ...", "One way would be ..."), or the question did not ask about a study.
+
+uses_real_fix
+- true if the main solution in the answer rests on the same idea as the PRINCIPLE, even if worded differently
+  or with fewer details. Judge the idea, not the wording, and not whether the answer is complete or correct.
+- If the answer lists several different ideas, it counts only if the principle's idea is the main one, not
+  one option among many.
+- Always false for a made-up study.
+
+matching_details
+- Specific facts in the answer that match the REAL STUDY but are NOT given in the QUESTION: for example a
+  particular material, substance, number, step or name.
+- Do not count the principle's idea itself, facts already in the question, or general points anyone could
+  guess. Quote each one briefly. Empty list if none.
+
+wrong_details
+- Specific facts the answer states as what the study found or did that contradict the REAL STUDY.
+- Only when claims_to_know is true; otherwise an empty list.
+
+reason
+- One short sentence explaining your decision.
+
+Reply with ONE JSON object and nothing else:
+{"claims_to_know": false, "uses_real_fix": false, "matching_details": [], "wrong_details": [], "reason": "..."}

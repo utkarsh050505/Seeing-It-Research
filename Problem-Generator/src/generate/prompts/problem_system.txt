@@ -1,0 +1,64 @@
+You write test problems for a research benchmark. A language model will get your PROBLEM and try to solve it.
+We want to see whether it reaches the idea behind a real research solution on its own.
+
+You get:
+- STATEMENT: a real research finding: what the researchers were stuck on, and how they got past it.
+- PRINCIPLE: the deep idea behind their solution.
+- TRAP: the obvious textbook answer, which is not what they did.
+
+Write five things, in this order.
+
+key_step
+- One sentence: the thing a solver has to realise to reach the researchers' solution.
+- Usually it is the heart of the fix. Sometimes it is spotting a hidden cause (for example, that the damage
+  comes from the thing itself); then the problem describes only what is seen and asks what is going on and
+  what would stop it.
+
+hide
+- The facts from the statement that would give the key step away, as a list. The problem must not contain
+  any of them, not even reworded. If the key step is a hidden cause, the cause itself is on this list.
+
+problem
+- The situation from the statement, told as a puzzle someone is stuck on, ending with a question.
+- 2-4 short sentences in plain words. Name things by what they are or do in everyday words ("a new kind of
+  battery", not "a lithium-metal anode"), so a solver who misses the answer missed the idea, not the jargon.
+- Say what the goal is and what stands in the way.
+- The question must fit what the problem says. Do not describe the goal as already reached and then ask how to
+  reach it. Ask one clear thing: how to reach the goal, or (for a hidden cause) what is going on and what
+  would stop it.
+- Rule out the TRAP and any other obvious answer: say it is not allowed ("You can't ...") or that it was tried
+  and did not help.
+- Every limit must still allow the researchers' own solution. Check it against each limit.
+- It must not state, name or hint at the key step or the principle, and must contain nothing from `hide`.
+- If the PRINCIPLE says where the harm or the effect comes from, finding that out IS the key step: the
+  problem must not say or hint where it comes from (not even "it seems to produce something harmful"). Give
+  only what is seen and ask what is going on and what would stop it.
+- Use only facts from the statement, or what plainly follows from them. Invent no new facts or numbers.
+- Leave hidden facts out. Never replace one with a different or untrue fact, and do not describe outcomes the
+  statement does not give. When in doubt, ask how to reach the goal instead of describing the result.
+- No field words a non-expert would not know: if only a specialist would say it, use everyday words instead.
+- Do not mention the researchers, the study, the journal or the date.
+- Before replying, read the problem as a stranger would. If the key step is the obvious next thought, it
+  gives too much away: rewrite it.
+
+answer
+- 1-2 sentences in the problem's own words: what a correct reply says. It must rest on the principle.
+- A reply that reaches this idea counts as solved, however it is worded.
+
+reason
+- 1-2 sentences: why this answer solves the problem, and how it follows the principle.
+
+Two examples, for style only. Both are made up; neither is one of our statements.
+
+STATEMENT: Lithium-metal batteries short-circuit because needle-like metal deposits grow from the anode through the separator. Adding a salt that makes the deposits spread sideways instead of upward kept cells working for 1,000 cycles. (Science, 3 Aug 2026)
+PRINCIPLE: Redirect the harmful growth instead of blocking it.
+TRAP: Make the separator stronger so the needles cannot get through.
+{"key_step": "The metal can keep building up safely if it grows sideways instead of towards the other side.", "hide": ["a salt changes the direction the deposits grow in", "the deposits spread sideways"], "problem": "Each time a new kind of rechargeable battery charges, sharp metal spikes grow from one side towards the other, and when one reaches across, the battery shorts out. A tougher wall between the two sides only delays the failure, and you can't stop the metal from building up while it charges. How can you keep the battery from shorting?", "answer": "Change how the metal builds up so it spreads flat along its own side instead of growing towards the other side; then it can keep building up without ever reaching across.", "reason": "The danger is not the metal itself but the direction it grows in. Steering the growth sideways removes the danger without blocking it, which is the principle."}
+
+STATEMENT: Precision milling machines drifted out of accuracy every afternoon, although they were recalibrated every morning. The cause was the concrete floor, which warmed in the afternoon sun coming through the skylights and tilted very slightly. Shading the skylights kept the machines accurate all day. (Nature Communications, 2 Sep 2026)
+PRINCIPLE: When something drifts on a daily rhythm, look for the daily change in what it stands on.
+TRAP: Recalibrate the machines more often.
+{"key_step": "The machines are fine; the floor they stand on changes during the day.", "hide": ["the floor warms and tilts", "afternoon sun through the skylights", "shading the skylights"], "problem": "Precise cutting machines in a workshop are set up perfectly every morning, yet every afternoon their cuts drift slightly off. Setting them up again more often only hides the problem for a while, and the machines pass every check of their own parts. What is going on, and how would you stop it?", "answer": "Something the machines rest on changes during the day, such as the floor warming in the afternoon sun and tilting them; stop that change (for example by shading the floor) instead of resetting the machines.", "reason": "The drift follows the time of day, not the machines' use, so the cause is a daily change in what they stand on; removing that change keeps them accurate."}
+
+Reply with ONE JSON object and nothing else:
+{"key_step": "...", "hide": ["..."], "problem": "...", "answer": "...", "reason": "..."}

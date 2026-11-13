@@ -1,0 +1,50 @@
+You write a short clue for a research benchmark about noticing distant analogies. A language model that is stuck
+on the PROBLEM will later read a short story built from your clue, mixed in with unrelated stories. The test is
+whether it notices that this story holds the idea it needs. So the clue must carry the same idea as the real
+solution, in a completely different everyday setting.
+
+You get:
+- STATEMENT: the real research finding.
+- PRINCIPLE: the idea behind the researchers' solution.
+- TRAP: the obvious wrong fix, which the problem rules out.
+- PROBLEM: what the model is stuck on.
+- ANSWER: what a correct reply to the problem says.
+
+Write, in this order:
+
+parts
+- The PRINCIPLE split into its 2-4 parts, each short. Say who or what does each thing: for example, whether
+  something happens by itself or someone makes it happen. That difference matters.
+- Keep the kind of change exact, as the ANSWER has it: going back to how it was is not the same as dying,
+  breaking or being thrown away; being held in is not the same as being kept out.
+- If the principle lets everything in first, that is a part of its own: nothing is checked, sorted or turned
+  away at the entrance.
+
+mapping
+- For each part: how it happens in the ANSWER, and what happens in your clue that plays the same role, done by
+  the same kind of actor. A list of {"part": "...", "problem": "...", "clue": "..."}.
+
+clue
+- 2-3 short sentences: one small scene from everyday life (home, cooking, sport, farming, shops, travel,
+  nature, ...), far from the problem's field and setting.
+- Every part in `mapping` happens in it as an event, in the same role, done by the same kind of actor, with the
+  same kind of change.
+- If a part happens by itself, nothing and nobody in the scene makes it happen: no checker, detector, sorter,
+  guard or helper. If everything is let in first, nothing in the scene checks things at the door or turns them
+  away on arrival.
+- Before replying, say to yourself in one sentence what a stranger who reads only the scene would think its
+  trick is. If that is the TRAP, or anything other than the PRINCIPLE, pick a different scene.
+- It is a scene, not a puzzle or a lesson: no question, no "You can't ...", no moral at the end, and none of
+  the principle's own words. Show the idea; never name it.
+- Share no key words with the PROBLEM, and do not follow its sentence order.
+
+Example, for style only. It is made up; it is not one of our statements.
+
+STATEMENT: Lithium-metal batteries short-circuit because needle-like metal deposits grow from the anode through the separator. Adding a salt that makes the deposits spread sideways instead of upward kept cells working for 1,000 cycles. (Science, 3 Aug 2026)
+PRINCIPLE: Redirect the harmful growth instead of blocking it.
+PROBLEM: Each time a new kind of rechargeable battery charges, sharp metal spikes grow from one side towards the other, and when one reaches across, the battery shorts out. A tougher wall between the two sides only delays the failure, and you can't stop the metal from building up while it charges. How can you keep the battery from shorting?
+ANSWER: Change how the metal builds up so it spreads flat along its own side instead of growing towards the other side; then it can keep building up without ever reaching across.
+{"parts": ["something keeps growing towards a place where it does harm", "the growth is allowed to go on", "its direction is changed so it never reaches that place, instead of a barrier being put in its way"], "mapping": [{"part": "growth towards harm", "problem": "metal spikes grow towards the other side and short the battery", "clue": "ivy climbs the wall into the gutter and blocks it"}, {"part": "the growth goes on", "problem": "the metal keeps building up", "clue": "the ivy keeps growing all summer"}, {"part": "direction changed instead of blocked", "problem": "the metal is made to spread flat along its own side", "clue": "each new shoot is tied along a wire running sideways below the gutter"}], "clue": "Every spring the ivy on Mrs Patel's garden wall climbed into the gutter and blocked it, and cutting it back only lasted a few weeks. This year she ran a wire along the wall just below the gutter and tied each new shoot to it. The ivy spread thickly along the wire all summer, and the gutter stayed clear."}
+
+Reply with ONE JSON object and nothing else:
+{"parts": ["..."], "mapping": [{"part": "...", "problem": "...", "clue": "..."}], "clue": "..."}

@@ -1,0 +1,48 @@
+You check a short clue for a research benchmark before any model sees it. A model stuck on the PROBLEM will read
+a story built from the clue; the clue has to carry the same idea as the real solution, in a distant everyday
+setting.
+
+You get:
+- PRINCIPLE: the idea behind the real solution.
+- ANSWER: how that idea solves the PROBLEM.
+- TRAP: the obvious wrong fix, which the PROBLEM rules out.
+- PROBLEM: what the model is stuck on.
+- CLUE: the text to check.
+
+First:
+
+reader_sees
+- Read only the CLUE, as a stranger would, before looking at anything else. In one sentence: what is the trick
+  in this scene? Say who or what does what, and how it turns out. Describe the events, not the lesson the
+  writer may have meant.
+
+Then decide:
+
+missing_part
+- true if any part of the PRINCIPLE, as it works in the ANSWER, does not happen in the CLUE, or happens in a
+  different role, by a different kind of actor, or as a different kind of change. For example: in the answer
+  something happens by itself, but in the clue a person, a device or a tool does it (a checker, a detector, a
+  sorter, a guard); the answer lets everything through first, but the clue checks things or turns them away
+  at the entrance; in the answer the wrong ones go back to how they were, but in the clue they die, break,
+  are thrown out or are sent away.
+- false if a reader who saw the parallel could carry every part of the clue's events over to the problem and
+  arrive at the ANSWER, not at a different idea.
+
+looks_like_trap
+- true if the trick in `reader_sees`, carried over to the PROBLEM, would lead to the TRAP or to a fix other
+  than the ANSWER. For example, if the trap is "build a stronger wall" and the scene's trick is a sturdier
+  fence, it reads as the trap.
+
+states_lesson
+- true if the CLUE states the idea as a lesson or moral, uses the PRINCIPLE's own words, or reads as a puzzle
+  (a question, or "You can't ...").
+
+too_close
+- true if the CLUE shares key words, the subject or the setting with the PROBLEM, so a reader could link the
+  two by their surface instead of by the idea.
+
+why
+- One short sentence quoting the words behind each problem found. Empty if all four are false.
+
+Reply with ONE JSON object and nothing else:
+{"reader_sees": "...", "missing_part": false, "looks_like_trap": false, "states_lesson": false, "too_close": false, "why": ""}

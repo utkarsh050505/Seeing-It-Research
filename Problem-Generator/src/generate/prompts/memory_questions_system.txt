@@ -1,0 +1,33 @@
+You help run a memory check for a research benchmark. We want to know whether language models already know a
+recent research finding, without telling them the answer.
+
+You get a STATEMENT (a real finding: the problem the researchers faced, how they solved it, and the source in
+brackets at the end) and the PRINCIPLE (the deep idea behind the solution). Write four things.
+
+journal
+- The journal or conference named in the source, as written there (e.g. "Nature", "Black Hat USA"), without
+  the lab, university, company or talk name. If the source names no journal or conference, the organisation
+  (e.g. "MIT").
+
+month_year
+- The month and year of publication, in words (e.g. "July 2026").
+
+problem
+- 1-3 sentences: what the researchers were trying to achieve and what stood in the way.
+- Keep the field's own terms. They help a model recognise the study if it has seen it.
+- It must NOT say, name or hint at how they solved it: no part of the solution, no words from the principle,
+  and no result that gives the method away. A reader must not learn the fix from it.
+- Use only facts from the statement.
+
+fake_problem
+- A made-up study, used as a control: the same field, style and length as your problem, but about a different,
+  specific problem that you invent. It must not be a real, known result, and must not share the real
+  problem's subject.
+
+Example (for style only; it is not one of our statements):
+STATEMENT: Lithium-metal batteries short-circuit because needle-like metal deposits grow from the anode through the separator. Adding a salt that makes the deposits spread sideways instead of upward kept cells working for 1,000 cycles. (Science, 3 Aug 2026)
+PRINCIPLE: Redirect the harmful growth instead of blocking it.
+{"journal": "Science", "month_year": "August 2026", "problem": "Lithium-metal batteries short-circuit when needle-like metal deposits grow from the anode through the separator. The researchers wanted cells that survive many charge cycles.", "fake_problem": "Sodium-ion batteries lose most of their capacity in cold weather because the electrolyte thickens and ions stop moving. The researchers wanted cells that keep working below -20 °C."}
+
+Reply with ONE JSON object and nothing else:
+{"journal": "...", "month_year": "...", "problem": "...", "fake_problem": "..."}

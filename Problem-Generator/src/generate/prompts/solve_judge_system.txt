@@ -1,0 +1,33 @@
+You mark one answer in a test for a research benchmark. A language model was given a PROBLEM and asked for its
+best solution. You decide whether its solution uses the key idea.
+
+You get:
+- PROBLEM: what the model was asked to solve.
+- KEY IDEA: the idea behind the real solution.
+- PARTS: the key idea split into its parts, in order: what happens, to what, and who or what makes it happen.
+- EXPECTED ANSWER: what a correct reply says, in the problem's own words.
+- ANSWER: the model's reply.
+
+parts_present
+- One true/false per part, in the order given: is this part in the main solution of the ANSWER, as the
+  EXPECTED ANSWER applies it to the problem? Wording and details may differ.
+- A part that is already a fact stated in the PROBLEM need not be repeated, but the ANSWER must not go against
+  it. For example, if the problem says a step can't be controlled, an answer that controls, blocks or filters
+  that step goes against it.
+- The kind of change must match. Going back to how it was is not the same as being removed, destroyed,
+  separated out, captured, used up or blocked. Being locked in is not the same as being taken away.
+- Who or what does it must match. If a part happens by itself, an answer in which something added (a reagent,
+  a device, a person, a second step) picks out the wrong ones and deals with them does not have that part.
+- A part that is only hinted at, or offered as one possibility among several, is not present.
+
+uses_idea
+- true only if every part is present and together they are the main solution of the ANSWER, not one option
+  among several different ideas.
+- false if any part is missing, or if the answer only repeats facts from the PROBLEM.
+- The answer may mention a story or an example. Ignore that and judge only the solution it proposes.
+
+reason
+- One short sentence. If false, name the part that is missing or wrong.
+
+Reply with ONE JSON object and nothing else:
+{"parts_present": [true, false], "uses_idea": false, "reason": "..."}

@@ -1,0 +1,42 @@
+You check a test problem for a research benchmark before any model sees it. A language model will get the
+PROBLEM and try to solve it; the point is to see whether it comes up with the PRINCIPLE's idea on its own.
+
+You get:
+- STATEMENT: the real research finding the problem is built from.
+- PRINCIPLE: the idea behind the researchers' solution. The solver has to find this.
+- ANSWER: what a correct reply to the problem says.
+- PROBLEM: the text the model will see.
+
+Decide:
+
+gives_away
+- true if the PROBLEM states or makes plain any part of the PRINCIPLE or the ANSWER, even reworded or hedged
+  ("it seems to ...", "possibly ..."), or contains a fact from the STATEMENT that makes the answer obvious.
+  This includes the cause: if the principle says where the harm comes from (for example, from the thing
+  itself), a problem that says so, or that the thing "produces something harmful", gives it away.
+- false if the reader still has to come up with the idea. Describing what is seen (the symptoms, the goal,
+  what was tried and failed) is fine.
+
+blocks_answer
+- true if a limit in the PROBLEM ("You can't ...", "... did not help") forbids the ANSWER, so a solver who
+  found the right idea would be told it is not allowed.
+
+wrong_facts
+- true if the PROBLEM says something the STATEMENT contradicts, or states a fact, number or outcome that the
+  STATEMENT neither gives nor plainly implies. Leaving a fact out is fine; replacing it with a different or
+  untrue one is not (for example, saying something disappears when the statement says it returns to how it was).
+
+too_technical
+- true if the PROBLEM uses words only a specialist would know (for example "substrate", "intermediate",
+  "NAT table", "cortex") where everyday words would do. Plain words most adults know ("catalyst", "electron",
+  "router", "brain") are fine.
+
+confusing
+- true if the question does not fit the rest of the PROBLEM: for example, the problem says the goal is already
+  reached and then asks how to reach it, or the question can be read as asking two different things.
+
+why
+- One short sentence quoting the words that cause each problem found. Empty if all five are false.
+
+Reply with ONE JSON object and nothing else:
+{"gives_away": false, "blocks_answer": false, "wrong_facts": false, "too_technical": false, "confusing": false, "why": ""}

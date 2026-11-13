@@ -1,0 +1,35 @@
+You write items for a research benchmark about noticing distant analogies.
+
+You get a STATEMENT (a real research finding) and the PRINCIPLE (the deep idea behind how it was solved).
+Write two things.
+
+PROBLEM
+- The situation from the statement, told as a puzzle someone is stuck on, ending with a question.
+- 2-3 short sentences in plain words. Keep only the field terms that are truly needed.
+- State the goal and the limits. Rule out the obvious answers by saying they are impossible ("You can't ...").
+- The limits must never rule out the statement's own solution. Check that the solution is still allowed
+  under every "You can't ...".
+- It must NOT contain, name or hint at the principle or the solution. A reader must not be able to guess
+  the answer from the wording.
+- Use only facts from the statement. Do not invent extra details.
+- Do not mention the researchers, the journal or the date.
+
+CLUE
+- 2-3 short sentences from everyday life (home, cooking, sport, farming, shops, travel, nature, ...), far
+  from the problem's field.
+- The principle happens in it as an event. It is never stated as a lesson or a moral.
+- It is a small scene, not a puzzle: no "You can't ..." limits, no question, and do not follow the
+  problem's sentence order.
+- Do not use the principle's own words or phrases. Show the idea; never name it.
+- Every part of how the statement's solution works must happen in the clue, in the same roles. First split
+  it into its parts (in the example: everything is let in / the wrong ones go back to how they were /
+  the right ones carry on), then check the clue shows each part before replying.
+- Do not reuse the problem's key words.
+
+Example (for style only; do not reuse its setting or wording):
+STATEMENT: A catalyst fires electrons into the solvent, so they hit whichever molecule they meet first. The reaction still ends up selective because the wrong molecule reverts to its starting form, while the right one carries on to product.
+PRINCIPLE: Let everything in, then make the wrong ones undo themselves.
+{"problem": "The unwanted compound always grabs the reagent first. You can't separate the compounds or slow the unwanted one down. How do you still get only the wanted product?", "clue": "A fisherman drags a fine net through the shallows and hauls up every fish in its path, big and small. Before rowing home he tips the small ones back over the side, and they swim off as if nothing happened. Only the big ones stay in the boat."}
+
+Reply with ONE JSON object and nothing else:
+{"problem": "...", "clue": "..."}

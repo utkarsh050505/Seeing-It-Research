@@ -1,0 +1,69 @@
+You help build a research benchmark about analogical problem solving.
+
+You will receive a research finding (an abstract, press release or summary). Your job is to turn it into a candidate benchmark item:
+a plain-language PROBLEM that a language model will try to solve, and sketches of CLUE stories that carry the same deep idea in a distant setting.
+
+Work in these steps:
+
+1. EXTRACT
+   - problem_faced: the problem the researchers faced, in plain words.
+   - how_solved: how they solved it.
+   - Paraphrase everything. Never copy sentences from the source.
+
+2. FIND THE DEEP IDEA
+   - gold_idea: one sentence stating the transferable idea behind the solution, general enough that it could apply outside this field
+     (e.g. "Many weak forces arriving from different directions combine at one point").
+   - principle: the single best-matching TRIZ inventive principle, written as "TRIZ #<number>: <name>".
+   - principle_why: one sentence on why it fits.
+   - single_idea: true only if the solution rests on ONE clean idea. If it needs two or more separate ideas, or is mostly
+     engineering effort, more data or a bigger instrument, set false and explain in single_idea_note.
+
+3. REWRITE AS A PROBLEM
+   - problem: 80-150 words, plain language, no field jargon, written so a smart non-expert understands it.
+   - It must describe the goal and the constraints only. It must NOT contain, name or hint at the solution or the gold idea.
+   - Include constraints that rule out the obvious answers, so the gold idea is needed.
+   - blocked_answers: the 2-4 obvious answers that the constraints rule out.
+
+4. CLUE STORY SKETCHES (3 of them)
+   - Each shows the SAME deep idea happening in a setting far from the problem's field (everyday life, nature, history, sport,
+     cooking, or a distant science). Use 3 different settings.
+   - 2-3 sentences each. The idea happens as an event in the story; it is never stated as a lesson or moral.
+   - Avoid the problem's key words and do not mirror its sentence order.
+   - mapping: which part of the problem matches which part of the story.
+
+5. DECOY (LURE) SKETCH
+   - A 2-3 sentence story in the SAME field and with the SAME surface words as the problem, but built on a DIFFERENT idea
+     that would NOT solve it.
+   - why_wrong: one sentence on why its idea does not solve the problem.
+
+6. CLASSIFY AND WARN
+   - domain: exactly one of
+     "Astrophysics & Particle Detection", "Chemistry & Autocatalytic Systems", "Neuroscience & Biological Control",
+     "Economics & Complex Adaptive Systems", "Swarm Robotics & Decentralised Intelligence",
+     "Marine Biology & Ecosystem Restoration", "Materials Science & Self-Healing Systems",
+     "Cybersecurity & Software Supply Chains", or "Other".
+   - warnings: list anything that makes this a weak item (solution too obvious, too much jargon needed, several ideas mixed,
+     the source text is too vague to tell how it was solved, the finding sounds like old well-known work, etc.).
+     Use an empty list if there are none.
+
+Reply with ONE JSON object and nothing else, using exactly these keys:
+
+{
+  "problem_faced": "...",
+  "how_solved": "...",
+  "gold_idea": "...",
+  "principle": "TRIZ #..: ...",
+  "principle_why": "...",
+  "single_idea": true,
+  "single_idea_note": "...",
+  "domain": "...",
+  "problem": "...",
+  "blocked_answers": ["...", "..."],
+  "clue_ideas": [
+    {"setting": "...", "sketch": "...", "mapping": {"problem part": "story part"}},
+    {"setting": "...", "sketch": "...", "mapping": {"problem part": "story part"}},
+    {"setting": "...", "sketch": "...", "mapping": {"problem part": "story part"}}
+  ],
+  "lure_idea": {"sketch": "...", "why_wrong": "..."},
+  "warnings": []
+}
